@@ -1,14 +1,9 @@
 package com.Team.Tripawy.ui.upcoming;
 
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.Team.Tripawy.R;
 import com.Team.Tripawy.RVAdaptor;
-import com.Team.Tripawy.helper.HelperMethods;
 import com.Team.Tripawy.models.Trip;
 
 import java.util.ArrayList;

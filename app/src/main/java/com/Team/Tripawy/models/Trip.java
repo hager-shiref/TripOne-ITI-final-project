@@ -2,11 +2,6 @@ package com.Team.Tripawy.models;
 
 import java.util.ArrayList;
 import java.util.List;
-
-
-
-
-
 public class Trip {
     private int id;
     private String name;
@@ -18,10 +13,7 @@ public class Trip {
     private String from;
     private String to;
     private List<String> notes;
-    public Trip() {
-
-    }
-
+    public Trip() { }
 
     public Trip(int id, String name, String date, String time, String  tripState, String  tripType, String  tripRepeat, String from, String to, List<String> notes) {
         this.id = id;
