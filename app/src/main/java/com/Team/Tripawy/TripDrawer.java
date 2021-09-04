@@ -23,6 +23,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.Team.Tripawy.databinding.ActivityMainBinding;
 import com.google.firebase.auth.FirebaseAuth;
 
+
 public class TripDrawer extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -37,7 +38,6 @@ public class TripDrawer extends AppCompatActivity {
         setContentView(binding.getRoot());
         setSupportActionBar(binding.appBarMain.toolbar);
         userEmail=getIntent().getStringExtra(Login.EMAIL);
-
         TextView textView = binding.navView.getHeaderView(0).findViewById(R.id.userEmail);
         GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(TripDrawer.this);
         if(signInAccount!=null)
@@ -50,7 +50,6 @@ public class TripDrawer extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(TripDrawer.this, AddTrip.class);
                 startActivity(intent);
-                Log.i("email","email : "+ userEmail);
 
             }
         });

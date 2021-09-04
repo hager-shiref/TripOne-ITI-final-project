@@ -6,11 +6,16 @@
         <entry key="..\:/ITI_Tasks/new/Update UI/Tripawy/app/src/main/res/layout/activity_add_note.xml" value="0.25" />
         <entry key="..\:/ITI_Tasks/new/Update UI/Tripawy/app/src/main/res/layout/activity_add_trip.xml" value="0.2421875" />
         <entry key="..\:/ITI_Tasks/new/Update UI/Tripawy/app/src/main/res/layout/activity_login.xml" value="0.2421875" />
+        <entry key="..\:/ITI_Tasks/new/Update UI/Tripawy/app/src/main/res/layout/activity_view_notes.xml" value="0.20555555555555555" />
         <entry key="..\:/ITI_Tasks/new/Update UI/Tripawy/app/src/main/res/layout/add_note.xml" value="0.33" />
         <entry key="..\:/ITI_Tasks/new/Update UI/Tripawy/app/src/main/res/layout/content_main.xml" value="0.2421875" />
+        <entry key="..\:/ITI_Tasks/new/Update UI/Tripawy/app/src/main/res/layout/fragment_history.xml" value="0.128125" />
+        <entry key="..\:/ITI_Tasks/new/Update UI/Tripawy/app/src/main/res/layout/fragment_upcoming.xml" value="0.2" />
         <entry key="..\:/ITI_Tasks/new/Update UI/Tripawy/app/src/main/res/layout/nav_header_main.xml" value="0.2421875" />
         <entry key="..\:/ITI_Tasks/new/Update UI/Tripawy/app/src/main/res/layout/recycler.xml" value="0.22" />
         <entry key="..\:/ITI_Tasks/new/Update UI/Tripawy/app/src/main/res/menu/activity_main_drawer.xml" value="0.2421875" />
+        <entry key="..\:/ITI_Tasks/new/Update UI/Tripawy/app/src/main/res/menu/menu.xml" value="0.25" />
+        <entry key="..\:/ITI_Tasks/new/Update UI/Tripawy/app/src/main/res/menu/notes_menu.xml" value="0.128125" />
         <entry key="..\:/Tripawy/app/src/main/res/drawable-v24/ic_add_24px.xml" value="0.21296296296296297" />
         <entry key="..\:/Tripawy/app/src/main/res/drawable-v24/ic_add_circle.xml" value="0.21296296296296297" />
         <entry key="..\:/Tripawy/app/src/main/res/drawable-v24/ic_date_range_24px.xml" value="0.21296296296296297" />

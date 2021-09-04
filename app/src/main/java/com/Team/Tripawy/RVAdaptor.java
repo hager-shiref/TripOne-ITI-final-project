@@ -13,22 +13,21 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
+import com.Team.Tripawy.Room.RDB;
 import com.Team.Tripawy.models.Trip;
-
-import java.util.ArrayList;
+import androidx.annotation.NonNull;
+import androidx.lifecycle.LiveData;
+import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
+import java.util.ArrayList;
+import java.util.concurrent.Executors;
 
 public class RVAdaptor extends RecyclerView.Adapter<RVAdaptor.ViewHolder> {
-
-    List<Trip> list = new ArrayList<>();
-
+    List <Trip> list=new ArrayList<Trip>();
     Context cntxt;
 
+    LiveData<List<Trip>> listLiveData ;
 
 
     public RVAdaptor(List<Trip> list, Context cntxt) {
@@ -51,7 +50,6 @@ public class RVAdaptor extends RecyclerView.Adapter<RVAdaptor.ViewHolder> {
         holder.start.setText(list.get(position).getFrom());
         holder.name.setText(list.get(position).getName());
         holder.date.setText(list.get(position).getDate()+"");
-
         holder.time.setText(list.get(position).getTime()+"");
         holder.end.setText(list.get(position).getTo());
         holder.popup.setOnClickListener(new View.OnClickListener() {
@@ -59,30 +57,44 @@ public class RVAdaptor extends RecyclerView.Adapter<RVAdaptor.ViewHolder> {
             public void onClick(View v) {
                 PopupMenu popupMenu = new PopupMenu(cntxt, holder.popup);
                 popupMenu.inflate(R.menu.menu);
+                Trip trip=new Trip();
+                int ID=list.get(position).getId();
+                trip.setId(ID);
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
-
-                        if (item.getItemId() == R.id.editnote) {
+                        if(item.getItemId() == R.id.Edit){
+                            trip.setTripType("Updated");
+                            Intent i= new Intent(cntxt,AddTrip.class);
+                           cntxt.startActivity(i);
+                            Executors.newSingleThreadExecutor().execute(() ->{
+                                RDB.getTrips(v.getContext()).update(trip);
+                            });
+                        }
+                        if (item.getItemId() == R.id.addnote) {
 
                           /*  PopupMenu pop = new PopupMenu(cntxt, v);
                             pop.inflate(R.menu.notes_menu);
                             for (String n : list.get(position).getNotes()) {
-
                                 pop.getMenu().add(n);
                             }
                             pop.show();*/
-                           // Toast.makeText(cntxt, "no notes", Toast.LENGTH_SHORT).show();
+                            // Toast.makeText(cntxt, "no notes", Toast.LENGTH_SHORT).show();
                             Intent intent =new Intent(cntxt,AddNoteActivity.class);
                             cntxt.startActivity(intent);
 
                         }
-                        if (item.getItemId() == R.id.cancel) {
+                        if (item.getItemId() == R.id.delete) {
+                                trip.setTripState("Deleted");
+                            Executors.newSingleThreadExecutor().execute(() ->{
+                                RDB.getTrips(v.getContext()).delete(trip);
+                            });
 
-                            Toast.makeText(cntxt, "Canceled Trip!", Toast.LENGTH_LONG).show();
-                            list.get(position).setTripState("Canceled!");
-
-
+                        }
+                        if(item.getItemId()==R.id.cancel){
+                            Executors.newSingleThreadExecutor().execute(() ->{
+                                RDB.getTrips(v.getContext()).delete(trip);
+                            });
                         }
                         return false;
                     }
@@ -121,7 +133,7 @@ public class RVAdaptor extends RecyclerView.Adapter<RVAdaptor.ViewHolder> {
         holder.note.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =new Intent(cntxt,AddNoteActivity.class);
+                Intent intent =new Intent(cntxt,ViewNotes.class);
                 cntxt.startActivity(intent);
 
             }

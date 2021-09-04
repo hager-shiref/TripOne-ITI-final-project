@@ -1,39 +1,70 @@
 package com.Team.Tripawy.models;
 
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
+
+import com.Team.Tripawy.Room.Converter;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
+
+
+@Entity (tableName = "trip")
 public class Trip {
+    @PrimaryKey(autoGenerate = true)
     private int id;
     private String name;
     private String date;
     private String time;
     private String tripState;
-    private String  tripType;
-    private String  tripRepeat;
+    private String tripType;
     private String from;
     private String to;
-    private List<String> notes;
-    public Trip() { }
+    @TypeConverters({Converter.class})
+    private ArrayList<String> notes;
 
-    public Trip(int id, String name, String date, String time, String  tripState, String  tripType, String  tripRepeat, String from, String to, List<String> notes) {
+    public Trip(){}
+    public Trip(int id, String name, String date, String time, String tripState, String tripType, String from, String to, ArrayList<String> notes) {
         this.id = id;
         this.name = name;
         this.date = date;
         this.time = time;
         this.tripState = tripState;
         this.tripType = tripType;
-        this.tripRepeat = tripRepeat;
         this.from = from;
         this.to = to;
         this.notes = notes;
     }
-    public Trip(int id, String name, String  date, String  time, String from, String to) {
-        this.id = id;
+
+    @Ignore
+    public Trip(String name, String date, String time, String tripState, String tripType, String from, String to, ArrayList<String> notes) {
         this.name = name;
         this.date = date;
         this.time = time;
+        this.tripState = tripState;
+        this.tripType = tripType;
         this.from = from;
         this.to = to;
+        this.notes = notes;
+    }
+
+    public String getTripState() {
+        return tripState;
+    }
+
+    public void setTripState(String tripState) {
+        this.tripState = tripState;
+    }
+
+    public String getTripType() {
+        return tripType;
+    }
+
+    public void setTripType(String tripType) {
+        this.tripType = tripType;
     }
 
     public int getId() {
@@ -52,7 +83,7 @@ public class Trip {
         this.name = name;
     }
 
-    public String  getDate() {
+    public String getDate() {
         return date;
     }
 
@@ -64,32 +95,8 @@ public class Trip {
         return time;
     }
 
-    public void setTime(String  time) {
+    public void setTime(String time) {
         this.time = time;
-    }
-
-    public String  getTripState() {
-        return tripState;
-    }
-
-    public void setTripState(String  tripState) {
-        this.tripState = tripState;
-    }
-
-    public String  getTripType(String s) {
-        return tripType;
-    }
-
-    public void setTripType(String  tripType) {
-        this.tripType = tripType;
-    }
-
-    public String  getTripRepeat(String s) {
-        return tripRepeat;
-    }
-
-    public void setTripRepeat(String  tripRepeat) {
-        this.tripRepeat = tripRepeat;
     }
 
     public String getFrom() {
@@ -108,11 +115,11 @@ public class Trip {
         this.to = to;
     }
 
-    public List<String> getNotes() {
+    public ArrayList<String> getNotes() {
         return notes;
     }
 
-    public void setNotes(List<String> notes) {
+    public void setNotes(ArrayList<String> notes) {
         this.notes = notes;
     }
 }

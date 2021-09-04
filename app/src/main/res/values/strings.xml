@@ -28,7 +28,7 @@
     <string name="add_a_note">Add a note</string>
     <string name="cancel">cancel</string>
     <string name="add_trip">add trip</string>
-    <string name="TripName" > Trip Name</string>
+    <string name="TripName"> Trip Name</string>
     <string name="StartPoint">StartPoint</string>
     <string name="Search">Search</string>
     <string name="Endpoint">End Point</string>
@@ -46,8 +46,14 @@
     <string name="signinwith">"- Or sign in with "</string>
     <string name="haveAccount">Don\'t have an account ?</string>
     <string name="already_have_an_account">Already Have an Account?</string>
-    <string name="view_notes">View notes</string>
+    <string name="add_notes">Add notes</string>
     <string name="delete_trip">Delete Trip</string>
+    <string name="addNotes">Add Notes</string>
+    <string name="No">No UpComing Trips</string>
+    <string name="Edit_trip">Edit Trip</string>
+    <string name="cancel_trip">Cancel Trip</string>
+    <string name="your_notes">Your Notes</string>
+
     <string-array name="Repeat">
         <item>No Repeat</item>
         <item>Repeat Daily </item>

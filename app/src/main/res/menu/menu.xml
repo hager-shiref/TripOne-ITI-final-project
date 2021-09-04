@@ -3,14 +3,22 @@
 
 
 
-    <item android:id="@+id/editnote"
-        android:title="@string/view_notes">
+    <item android:id="@+id/addnote"
+        android:title="@string/add_notes">
 
     </item>
+    <item
+        android:id="@+id/Edit"
+        android:title="@string/Edit_trip">
+    </item>
+    <item
+        android:id="@+id/delete"
+        android:title="@string/delete_trip">
 
+    </item>
     <item
         android:id="@+id/cancel"
-        android:title="@string/delete_trip">
+        android:title="@string/cancel_trip">
 
     </item>
 </menu>
