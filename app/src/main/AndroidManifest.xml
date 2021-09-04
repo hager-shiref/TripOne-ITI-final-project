@@ -14,9 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ITIFinalProject">
         <activity
-            android:name=".ViewNotes"
-            android:exported="true" />
-        <activity
             android:name=".AddTrip"
             android:exported="true" />
         <activity

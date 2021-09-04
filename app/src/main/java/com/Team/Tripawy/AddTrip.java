@@ -1,12 +1,7 @@
 package com.Team.Tripawy;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.DialogFragment;
-
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,12 +13,17 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.DialogFragment;
+
 import com.Team.Tripawy.Room.RDB;
 import com.Team.Tripawy.models.Trip;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.concurrent.Executors;
 
 public class AddTrip extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
@@ -64,6 +64,7 @@ public class AddTrip extends AppCompatActivity implements TimePickerDialog.OnTim
         add_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                List<String> notes =new ArrayList<>();
                 Executors.newSingleThreadExecutor().execute(() ->{
                     RDB.getTrips(AddTrip.this).insert(
                             new Trip(tripName.getText().toString(),
@@ -74,8 +75,11 @@ public class AddTrip extends AppCompatActivity implements TimePickerDialog.OnTim
                                     "Dikirnis",
                                     "Mansoura",
                                     addNoteActivity.notes)
+
                     );
                 });
+                Toast.makeText(AddTrip.this, "Added Successfully", Toast.LENGTH_SHORT).show();
+                 AddTrip.this.finish();
             }
         });
 

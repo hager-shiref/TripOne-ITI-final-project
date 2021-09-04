@@ -1,8 +1,8 @@
 package com.Team.Tripawy;
-
 import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
@@ -14,13 +14,16 @@ import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
-import com.Team.Tripawy.Room.RDB;
-import com.Team.Tripawy.models.Trip;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.RecyclerView;
-import java.util.List;
+
+import com.Team.Tripawy.Room.RDB;
+import com.Team.Tripawy.models.Trip;
+
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.Executors;
 
 public class RVAdaptor extends RecyclerView.Adapter<RVAdaptor.ViewHolder> {
@@ -28,6 +31,7 @@ public class RVAdaptor extends RecyclerView.Adapter<RVAdaptor.ViewHolder> {
     Context cntxt;
 
     LiveData<List<Trip>> listLiveData ;
+    Trip trip;
 
 
     public RVAdaptor(List<Trip> list, Context cntxt) {
@@ -57,7 +61,7 @@ public class RVAdaptor extends RecyclerView.Adapter<RVAdaptor.ViewHolder> {
             public void onClick(View v) {
                 PopupMenu popupMenu = new PopupMenu(cntxt, holder.popup);
                 popupMenu.inflate(R.menu.menu);
-                Trip trip=new Trip();
+                trip=new Trip();
                 int ID=list.get(position).getId();
                 trip.setId(ID);
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
@@ -92,9 +96,17 @@ public class RVAdaptor extends RecyclerView.Adapter<RVAdaptor.ViewHolder> {
 
                         }
                         if(item.getItemId()==R.id.cancel){
+                            trip.setTripState("canceld");
+                            trip.setName(list.get(position).getName());
+                            trip.setDate(list.get(position).getDate());
+                            trip.setTime(list.get(position).getTime());
+                            trip.setTripType(list.get(position).getTripType());
+                            trip.setTo(list.get(position).getTo());
+                            trip.setFrom(list.get(position).getFrom());
                             Executors.newSingleThreadExecutor().execute(() ->{
-                                RDB.getTrips(v.getContext()).delete(trip);
+                                RDB.getTrips(v.getContext()).update(trip);
                             });
+
                         }
                         return false;
                     }
@@ -105,7 +117,8 @@ public class RVAdaptor extends RecyclerView.Adapter<RVAdaptor.ViewHolder> {
         holder.startnowBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                list.get(position).setTripState("Done!");
+
+
                 try {
                     // when google map installed
                     // intialize uri
@@ -133,11 +146,43 @@ public class RVAdaptor extends RecyclerView.Adapter<RVAdaptor.ViewHolder> {
         holder.note.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =new Intent(cntxt,ViewNotes.class);
-                cntxt.startActivity(intent);
+               // Intent intent =new Intent(cntxt,ViewNotes.class);
+               // cntxt.startActivity(intent);
+                List <String> notes =new ArrayList<>();
+               notes.add("note1");
+                notes.add(("note2"));
+                notes.add("notes3");
+                notes.add("notes3");
+                notes.add("notes3");
+               openDialog(notes);
+               /* String text="";
+                for(int i=0;i<notes.size();i++)
+                {
+                    text=text+"\n"+notes.get(i);
+                }
+                Toast.makeText(cntxt, text, Toast.LENGTH_SHORT).show();*/
 
             }
         });
+
+    }
+
+    private void openDialog(List <String>notes) {
+        String text="";
+        for(int i=0;i<notes.size();i++)
+        {
+            text=text+"\n"+notes.get(i);
+        }
+        AlertDialog dialog =new AlertDialog.Builder(cntxt)
+                .setTitle("Your notes")
+                .setMessage(text)
+                .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                }).create();
+        dialog.show();
 
     }
 
