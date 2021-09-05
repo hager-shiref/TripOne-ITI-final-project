@@ -7,10 +7,7 @@
         android:title="@string/add_notes">
 
     </item>
-    <item
-        android:id="@+id/Edit"
-        android:title="@string/Edit_trip">
-    </item>
+
     <item
         android:id="@+id/delete"
         android:title="@string/delete_trip">

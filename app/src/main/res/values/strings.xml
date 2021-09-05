@@ -53,6 +53,10 @@
     <string name="Edit_trip">Edit Trip</string>
     <string name="cancel_trip">Cancel Trip</string>
     <string name="your_notes">Your Notes</string>
+    <string name="uodate">Uodate</string>
+
+    <string name="cancle">cancle</string>
+    <string name="update">Update</string>
 
     <string-array name="Repeat">
         <item>No Repeat</item>

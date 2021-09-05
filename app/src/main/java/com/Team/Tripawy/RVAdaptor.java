@@ -1,4 +1,5 @@
 package com.Team.Tripawy;
+
 import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -11,8 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -56,6 +59,7 @@ public class RVAdaptor extends RecyclerView.Adapter<RVAdaptor.ViewHolder> {
         holder.date.setText(list.get(position).getDate()+"");
         holder.time.setText(list.get(position).getTime()+"");
         holder.end.setText(list.get(position).getTo());
+        holder.trip_state.setText(list.get(position).getTripState());
         holder.popup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,17 +68,10 @@ public class RVAdaptor extends RecyclerView.Adapter<RVAdaptor.ViewHolder> {
                 trip=new Trip();
                 int ID=list.get(position).getId();
                 trip.setId(ID);
+
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
-                        if(item.getItemId() == R.id.Edit){
-                            trip.setTripType("Updated");
-                            Intent i= new Intent(cntxt,AddTrip.class);
-                           cntxt.startActivity(i);
-                            Executors.newSingleThreadExecutor().execute(() ->{
-                                RDB.getTrips(v.getContext()).update(trip);
-                            });
-                        }
                         if (item.getItemId() == R.id.addnote) {
 
                           /*  PopupMenu pop = new PopupMenu(cntxt, v);
@@ -93,6 +90,7 @@ public class RVAdaptor extends RecyclerView.Adapter<RVAdaptor.ViewHolder> {
                             Executors.newSingleThreadExecutor().execute(() ->{
                                 RDB.getTrips(v.getContext()).delete(trip);
                             });
+                            Toast.makeText(cntxt, "deleted", Toast.LENGTH_SHORT).show();
 
                         }
                         if(item.getItemId()==R.id.cancel){
@@ -106,6 +104,7 @@ public class RVAdaptor extends RecyclerView.Adapter<RVAdaptor.ViewHolder> {
                             Executors.newSingleThreadExecutor().execute(() ->{
                                 RDB.getTrips(v.getContext()).update(trip);
                             });
+                            Toast.makeText(cntxt, "canceld", Toast.LENGTH_SHORT).show();
 
                         }
                         return false;
@@ -119,7 +118,25 @@ public class RVAdaptor extends RecyclerView.Adapter<RVAdaptor.ViewHolder> {
             public void onClick(View v) {
 
 
-                try {
+                Executors.newSingleThreadExecutor().execute(() -> {
+                    RDB.getTrips(cntxt).insert(
+                            new Trip(list.get(position).getName(),
+                                    list.get(position).getDate(),
+                                    list.get(position).getTime(),
+                                    "Done",
+                                    "One Way",
+                                    "Dikirnis",
+                                    "Mansoura",
+                                    AddNoteActivity.notes));
+                });
+                trip=new Trip();
+                int ID=list.get(position).getId();
+                trip.setId(ID);
+                Executors.newSingleThreadExecutor().execute(() ->{
+                    RDB.getTrips(v.getContext()).delete(trip);
+                });
+
+               try {
                     // when google map installed
                     // intialize uri
                     Uri uri = Uri.parse("https://www.google.co.in/maps/dir/"+"Dikirnis"+"/"+"Mansoura");
@@ -141,6 +158,7 @@ public class RVAdaptor extends RecyclerView.Adapter<RVAdaptor.ViewHolder> {
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     cntxt.startActivity(intent);
                 }
+
             }
         });
         holder.note.setOnClickListener(new View.OnClickListener() {
@@ -161,6 +179,22 @@ public class RVAdaptor extends RecyclerView.Adapter<RVAdaptor.ViewHolder> {
                     text=text+"\n"+notes.get(i);
                 }
                 Toast.makeText(cntxt, text, Toast.LENGTH_SHORT).show();*/
+
+            }
+        });
+        holder.linear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                List<String> data =new ArrayList<>();
+                data.add(list.get(position).getName());
+                data.add(list.get(position).getFrom());
+                data.add(list.get(position).getTo());
+                data.add(list.get(position).getDate());
+                data.add(list.get(position).getTime());
+                data.add(list.get(position).getId()+"");
+                Intent updateIntent =new Intent(cntxt,Update_Trip.class);
+                updateIntent.putStringArrayListExtra("data", (ArrayList<String>) data);
+                cntxt.startActivity(updateIntent);
 
             }
         });
@@ -193,9 +227,10 @@ public class RVAdaptor extends RecyclerView.Adapter<RVAdaptor.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView start, end, date, time, name;
+        TextView start, end, date, time, name,trip_state;
         Button popup, startnowBtn;
         ImageButton note;
+        LinearLayout linear;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -208,6 +243,8 @@ public class RVAdaptor extends RecyclerView.Adapter<RVAdaptor.ViewHolder> {
             date = itemView.findViewById(R.id.Date_id);
             popup = itemView.findViewById(R.id.pop_menu_id);
             note=itemView.findViewById(R.id.note_add);
+            trip_state=itemView.findViewById(R.id.trip_state);
+            linear=itemView.findViewById(R.id.linear);
 
         }
     }

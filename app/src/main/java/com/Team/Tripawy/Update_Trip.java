@@ -26,25 +26,33 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.concurrent.Executors;
 
-public class AddTrip extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
+public class Update_Trip extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
+
     Toolbar toolbar;
     ImageView dateView,timeView;
     TextView timeText,dateText;
     EditText editName,editStart,editEnd , tripName;
     Spinner mySpinner,mySpinner2;
-    Button add_btn;
+    Button update_btn,cancle_btn;
+    int trip_id;
+    Trip trip;
     AddNoteActivity addNoteActivity=new AddNoteActivity();
-
-
-
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         timeText.setText( hourOfDay +  " : " + minute );
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_trip);
+        setContentView(R.layout.activity_update_trip);
         initComponent();
+        List<String>data=new ArrayList<>();
+        data=getIntent().getStringArrayListExtra("data");
+        editName.setText(data.get(0));
+        editStart.setText(data.get(1));
+        editEnd.setText(data.get(2));
+        dateText.setText(data.get(3));
+        timeText.setText(data.get(4));
+         trip_id= Integer.parseInt(data.get(5));
         timeView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,39 +69,42 @@ public class AddTrip extends AppCompatActivity implements TimePickerDialog.OnTim
             }
 
         });
-        add_btn.setOnClickListener(new View.OnClickListener() {
+        cancle_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(tripName.getText().toString().isEmpty()||dateText.getText().toString().isEmpty()
-                ||timeText.getText().toString().isEmpty())
-                {
-                    Toast.makeText(AddTrip.this, "Enter All Data", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    List<String> notes = new ArrayList<>();
-                    Executors.newSingleThreadExecutor().execute(() -> {
-                        RDB.getTrips(AddTrip.this).insert(
-                                new Trip(tripName.getText().toString(),
-                                        dateText.getText().toString(),
-                                        timeText.getText().toString(),
-                                        "UpComing",
-                                        "One Way",
-                                        "Dikirnis",
-                                        "Mansoura",
-                                        addNoteActivity.notes)
+                Update_Trip.this.finish();
+            }
+        });
+        update_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                trip=new Trip();
+                trip.setId(trip_id);
+                Executors.newSingleThreadExecutor().execute(() ->{
+                    RDB.getTrips(getApplicationContext()).delete(trip);
+                });
+                Executors.newSingleThreadExecutor().execute(() -> {
+                    RDB.getTrips(Update_Trip.this).insert(
+                            new Trip(tripName.getText().toString(),
+                                    dateText.getText().toString(),
+                                    timeText.getText().toString(),
+                                    "UpComing",
+                                    "One Way",
+                                    "Dikirnis",
+                                    "Mansoura",
+                                    addNoteActivity.notes)
 
-                        );
-                    });
-                    Toast.makeText(AddTrip.this, "Added Successfully", Toast.LENGTH_SHORT).show();
-                    AddTrip.this.finish();
-                }
+                    );
+                });
+                Toast.makeText(Update_Trip.this, "update", Toast.LENGTH_SHORT).show();
+                Update_Trip.this.finish();
             }
         });
 
     }
     private  void initComponent(){
         toolbar = findViewById(R.id.addToolBar);
-       // setSupportActionBar(toolbar);
+        // setSupportActionBar(toolbar);
         tripName=findViewById(R.id.editName);
         timeView=findViewById(R.id.alarm);
         dateView=findViewById(R.id.calender);
@@ -101,7 +112,8 @@ public class AddTrip extends AppCompatActivity implements TimePickerDialog.OnTim
         dateText=findViewById(R.id.dateId);
         timeText.setText("");
         dateText.setText("");
-        add_btn=findViewById(R.id.addButton);
+       update_btn=findViewById(R.id.update_btn);
+       cancle_btn=findViewById(R.id.cancle_btn);
         editName=findViewById(R.id.editName);
         editStart=findViewById(R.id.editStart);
         editEnd=findViewById(R.id.editEnd);

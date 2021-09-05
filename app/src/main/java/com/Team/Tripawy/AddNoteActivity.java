@@ -25,6 +25,7 @@ public class AddNoteActivity extends AppCompatActivity {
     private View view1;
     TextView note;
     EditText edt_notes;
+    EditText edt;
     public static ArrayList<String> notes = new ArrayList<>();
 
     Button addNote;
@@ -35,15 +36,16 @@ public class AddNoteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_note);
        initComponent();
        trip =new Trip();
-        view1 = LayoutInflater.from(AddNoteActivity.this).inflate(R.layout.add_note, linearLayout, false);
+
 
         increase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                view1 = LayoutInflater.from(AddNoteActivity.this).inflate(R.layout.add_note, linearLayout, false);
+                edt =view1.findViewById(R.id.edt_notes);
                 if (!(counter > maxNotesNumber -2)) {
 
-                    EditText edt =view1.findViewById(R.id.edt_notes);
+
                     notes.add(counter,edt.getText().toString());
                     view1 = LayoutInflater.from(AddNoteActivity.this).inflate(R.layout.add_note, linearLayout, false);
                     view1.findViewById(R.id.btn_increase).setOnClickListener(this);

@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="8dp"
+    android:id="@+id/linear"
     android:layout_gravity="center|top">
 
     <androidx.cardview.widget.CardView
@@ -32,17 +33,27 @@
 
                 <TextView
                     android:id="@+id/trip_name_id"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="TextView"
                     android:textSize="8pt"
-                    android:textStyle="bold"
-                    android:layout_weight="2"
-                    android:text="TextView" />
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/trip_state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="TextView"
+                    android:textSize="8pt"
+                    android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/pop_menu_id"
                     android:layout_width="36dp"
                     android:layout_height="36dp"
+                    android:layout_weight="1"
                     android:backgroundTint="@color/white"
                     android:background="@drawable/ic_more_vert_black_24dp"
                     android:gravity="center"
