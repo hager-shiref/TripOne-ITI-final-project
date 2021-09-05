@@ -78,8 +78,8 @@ public class AddTrip extends AppCompatActivity implements TimePickerDialog.OnTim
                                         timeText.getText().toString(),
                                         "UpComing",
                                         "One Way",
-                                        "Dikirnis",
-                                        "Mansoura",
+                                        editStart.getText().toString(),
+                                        editEnd.getText().toString(),
                                         addNoteActivity.notes)
 
                         );

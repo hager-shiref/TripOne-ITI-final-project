@@ -1,7 +1,6 @@
 package com.Team.Tripawy;
 
 import android.annotation.SuppressLint;
-import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -125,8 +124,8 @@ public class RVAdaptor extends RecyclerView.Adapter<RVAdaptor.ViewHolder> {
                                     list.get(position).getTime(),
                                     "Done",
                                     "One Way",
-                                    "Dikirnis",
-                                    "Mansoura",
+                                    list.get(position).getFrom(),
+                                    list.get(position).getTo(),
                                     AddNoteActivity.notes));
                 });
                 trip=new Trip();
@@ -135,8 +134,12 @@ public class RVAdaptor extends RecyclerView.Adapter<RVAdaptor.ViewHolder> {
                 Executors.newSingleThreadExecutor().execute(() ->{
                     RDB.getTrips(v.getContext()).delete(trip);
                 });
+                Uri gmmIntentUri = Uri.parse("google.navigation:q=" + list.get(position).getTo());
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                mapIntent.setPackage("com.google.android.apps.maps");
+                cntxt.startActivity(mapIntent);
 
-               try {
+             /*  try {
                     // when google map installed
                     // intialize uri
                     Uri uri = Uri.parse("https://www.google.co.in/maps/dir/"+"Dikirnis"+"/"+"Mansoura");
@@ -157,7 +160,7 @@ public class RVAdaptor extends RecyclerView.Adapter<RVAdaptor.ViewHolder> {
                     //set flags
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     cntxt.startActivity(intent);
-                }
+                }*/
 
             }
         });
