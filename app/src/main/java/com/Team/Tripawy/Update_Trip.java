@@ -78,26 +78,35 @@ public class Update_Trip extends AppCompatActivity implements TimePickerDialog.O
         update_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                trip=new Trip();
-                trip.setId(trip_id);
-                Executors.newSingleThreadExecutor().execute(() ->{
-                    RDB.getTrips(getApplicationContext()).delete(trip);
-                });
-                Executors.newSingleThreadExecutor().execute(() -> {
-                    RDB.getTrips(Update_Trip.this).insert(
-                            new Trip(tripName.getText().toString(),
-                                    dateText.getText().toString(),
-                                    timeText.getText().toString(),
-                                    "UpComing",
-                                    "One Way",
-                                    "Dikirnis",
-                                    "Mansoura",
-                                    addNoteActivity.notes)
+                if(tripName.getText().toString().isEmpty()||dateText.getText().toString().isEmpty()
+                        ||timeText.getText().toString().isEmpty())
+                {
+                    Toast.makeText(Update_Trip.this, "Enter All Data", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    trip=new Trip();
+                    trip.setId(trip_id);
+                    Executors.newSingleThreadExecutor().execute(() ->{
+                        RDB.getTrips(getApplicationContext()).delete(trip);
+                    });
+                    Executors.newSingleThreadExecutor().execute(() -> {
+                        RDB.getTrips(Update_Trip.this).insert(
+                                new Trip(tripName.getText().toString(),
+                                        dateText.getText().toString(),
+                                        timeText.getText().toString(),
+                                        "UpComing",
+                                        "One Way",
+                                        "Dikirnis",
+                                        "Mansoura",
+                                        addNoteActivity.notes)
 
-                    );
-                });
-                Toast.makeText(Update_Trip.this, "update", Toast.LENGTH_SHORT).show();
-                Update_Trip.this.finish();
+                        );
+                    });
+                    Toast.makeText(Update_Trip.this, "update", Toast.LENGTH_SHORT).show();
+                    Update_Trip.this.finish();
+                }
+
             }
         });
 
