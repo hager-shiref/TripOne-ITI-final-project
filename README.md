@@ -9,8 +9,9 @@ After that, the application should keep track of the upcoming and past trips.
 # App Scenario
 
 1. First user can sign up by creating an account , she/he can sign in by his/her Google account directly
-2. After sign in screen will lead you to the upcoming screen and it shows all the upcoming trips , it there is any trips , it will be empty
-3. User should click on floating action button to add a new trip , he/she should full all edit text (Trip name , start point , end point , date and time )
+2. User can add notes to the trip 
+3. After sign in screen will lead you to the upcoming screen and it shows all the upcoming trips , it there is any trips , it will be empty
+4. User should click on floating action button to add a new trip , he/she should full all edit text (Trip name , start point , end point , date and time )
  to add this trip to a room database
 4. User can start the trip once he/she add it or when it’s time to start the trip , 
 there is an Alarm dialog that appears as a reminder and he can start , cancel or snooze 
