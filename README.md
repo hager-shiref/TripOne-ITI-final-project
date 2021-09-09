@@ -7,3 +7,6 @@ After that, the application should keep track of the upcoming and past trips.
 
 ---------
 # App Scenario
+
+1. First user can sign up by creating an account , she/he can sign in by his/her Google account directly
+
