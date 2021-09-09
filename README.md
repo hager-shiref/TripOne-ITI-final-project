@@ -18,6 +18,7 @@ there is an Alarm dialog that appears as a reminder and he can start , cancel or
 6. If the user cancels the trip before it begins , it will be added to history with a status of "Cancelled!".
 7. if snooze there is a notification that will appear to remember you the trip
 8. Another screen called history , it contains all the previous trips
-9. User can logout from the application
+9. User can sync data to FireBase 
+10. User can logout from the application
 
 ---------
