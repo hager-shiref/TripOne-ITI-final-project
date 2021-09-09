@@ -3,6 +3,14 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('C:\\Users\\hp\\Desktop\\ITI\\my_release_key.jks')
+            storePassword '123456'
+            keyAlias 'Key0'
+            keyPassword '123456'
+        }
+    }
     compileSdk 31
 
     defaultConfig {
@@ -19,6 +27,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
     compileOptions {
@@ -45,6 +54,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:21.0.1'
     implementation 'com.google.android.gms:play-services-auth:19.2.0'
     implementation 'com.google.android.libraries.places:places:2.4.0'
+    implementation 'com.google.firebase:firebase-database:20.0.1'
     testImplementation 'junit:junit:4.+'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation "android.arch.persistence.room:compiler:1.0.0-alpha9"

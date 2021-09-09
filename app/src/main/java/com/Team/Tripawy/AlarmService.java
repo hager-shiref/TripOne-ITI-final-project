@@ -1,24 +1,13 @@
-package com.ashehata.itifinalproject;
+package com.Team.Tripawy;
 
-import static com.ashehata.itifinalproject.helper.HelperMethods.showAlertDialog;
+import static com.Team.Tripawy.helper.HelperMethods.showAlertDialog;
 
-import android.accessibilityservice.AccessibilityService;
-import android.app.AlertDialog;
 import android.app.Service;
 import android.content.Intent;
-import android.graphics.PixelFormat;
 import android.media.MediaPlayer;
-import android.os.Build;
 import android.os.IBinder;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.WindowManager;
-import android.view.accessibility.AccessibilityEvent;
-import android.widget.FrameLayout;
 
 import androidx.annotation.Nullable;
-
-import com.ashehata.itifinalproject.helper.HelperMethods;
 
 public class AlarmService extends Service {
 
@@ -27,10 +16,7 @@ public class AlarmService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        // play your music here
-        mp = MediaPlayer.create(this.getApplicationContext(), R.raw.test);
-        mp.start();
-        showAlertDialog(this, this::stopSelf);
+
 
     }
 
@@ -41,6 +27,19 @@ public class AlarmService extends Service {
             mp.stop();
         }
         mp.release();
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        String name = (String)intent.getExtras().get("name");
+        String start = (String)intent.getExtras().get("start");
+        String end = (String)intent.getExtras().get("end");
+        String date = (String)intent.getExtras().get("date");
+        String time = (String)intent.getExtras().get("time");
+        mp = MediaPlayer.create(AlarmService.this.getApplicationContext(), R.raw.test);
+        mp.start();
+        showAlertDialog(AlarmService.this, AlarmService.this::stopSelf, date, time, name, start, end);
+        return super.onStartCommand(intent, flags, startId);
     }
 
     @Nullable

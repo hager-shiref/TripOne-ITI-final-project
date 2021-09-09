@@ -13,8 +13,8 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.Team.Tripawy.History_adapter;
 import com.Team.Tripawy.R;
-import com.Team.Tripawy.RVAdaptor;
 import com.Team.Tripawy.Room.RDB;
 import com.Team.Tripawy.models.Trip;
 
@@ -40,8 +40,8 @@ public class HistoryFragment extends Fragment {
             @Override
             public void onChanged(List<Trip> trips) {
                 recyclerView=view.findViewById(R.id.rv_trip1);
-                RVAdaptor homeAdaptor =new RVAdaptor(trips,getActivity());
-                recyclerView.setAdapter(homeAdaptor);
+                History_adapter historyAdaptor =new History_adapter(trips,getActivity());
+                recyclerView.setAdapter(historyAdaptor);
             }
         });
 

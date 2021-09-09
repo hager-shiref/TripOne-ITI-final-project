@@ -18,12 +18,11 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.DialogFragment;
 
 import com.Team.Tripawy.Room.RDB;
+import com.Team.Tripawy.helper.HelperMethods;
 import com.Team.Tripawy.models.Trip;
 
-import java.text.DateFormat;
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.List;
 import java.util.concurrent.Executors;
 
 public class AddTrip extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
@@ -38,7 +37,11 @@ public class AddTrip extends AppCompatActivity implements TimePickerDialog.OnTim
 
 
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-        timeText.setText( hourOfDay +  " : " + minute );
+        Calendar c=Calendar.getInstance();
+        c.set(Calendar.HOUR_OF_DAY,hourOfDay);
+        c.set(Calendar.MINUTE,minute);
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("HH:mm");
+        timeText.setText(simpleDateFormat.format(c.getTime()));
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +73,6 @@ public class AddTrip extends AppCompatActivity implements TimePickerDialog.OnTim
                     Toast.makeText(AddTrip.this, "Enter All Data", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    List<String> notes = new ArrayList<>();
                     Executors.newSingleThreadExecutor().execute(() -> {
                         RDB.getTrips(AddTrip.this).insert(
                                 new Trip(tripName.getText().toString(),
@@ -85,6 +87,8 @@ public class AddTrip extends AppCompatActivity implements TimePickerDialog.OnTim
                         );
                     });
                     Toast.makeText(AddTrip.this, "Added Successfully", Toast.LENGTH_SHORT).show();
+                    HelperMethods.startScheduling(AddTrip.this, dateText.getText().toString(),timeText.getText()
+                            .toString(),tripName.getText().toString(),editStart.getText().toString(),editEnd.getText().toString());
                     AddTrip.this.finish();
                 }
             }
@@ -115,7 +119,10 @@ public class AddTrip extends AppCompatActivity implements TimePickerDialog.OnTim
         c.set(Calendar.YEAR,year);
         c.set(Calendar.MONTH,month);
         c.set(Calendar.DAY_OF_MONTH,dayOfMonth);
-        String date= DateFormat.getDateInstance(DateFormat.DEFAULT).format(c.getTime());
-        dateText.setText(date);
+       // String date= DateFormat.getDateInstance(DateFormat.DEFAULT).format(c.getTime());
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("dd-MM-yy");
+
+        dateText.setText(simpleDateFormat.format(c.getTime()));
+       // dateText.setText(date);
     }
 }

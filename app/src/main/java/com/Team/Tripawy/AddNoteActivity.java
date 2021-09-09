@@ -8,12 +8,16 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.Team.Tripawy.Room.RDB;
 import com.Team.Tripawy.models.Trip;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Executors;
 
 public class AddNoteActivity extends AppCompatActivity {
 
@@ -24,8 +28,6 @@ public class AddNoteActivity extends AppCompatActivity {
     int counter = 0;
     private View view1;
     TextView note;
-    EditText edt_notes;
-    EditText edt;
     public static ArrayList<String> notes = new ArrayList<>();
 
     Button addNote;
@@ -35,18 +37,25 @@ public class AddNoteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_note);
        initComponent();
+
+       int id= getIntent().getIntExtra("id",2);
+       List<String>data=new ArrayList<>();
+       data=getIntent().getStringArrayListExtra("data");
        trip =new Trip();
+       trip.setId(id);
+       trip.setName(data.get(0));
+       trip.setDate(data.get(1));
+       trip.setTime(data.get(2));
+       trip.setTripType(data.get(3));
+       trip.setTo(data.get(4));
+       trip.setFrom(data.get(5));
+       trip.setTripState(data.get(6));
 
 
         increase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                view1 = LayoutInflater.from(AddNoteActivity.this).inflate(R.layout.add_note, linearLayout, false);
-                edt =view1.findViewById(R.id.edt_notes);
-                if (!(counter > maxNotesNumber -2)) {
-
-
-                    notes.add(counter,edt.getText().toString());
+                if (!(counter > maxNotesNumber - 2)) {
                     view1 = LayoutInflater.from(AddNoteActivity.this).inflate(R.layout.add_note, linearLayout, false);
                     view1.findViewById(R.id.btn_increase).setOnClickListener(this);
                     linearLayout.addView(view1);
@@ -60,16 +69,14 @@ public class AddNoteActivity extends AppCompatActivity {
         addNote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // notes.add(note.getText().toString());
+                ArrayList<String> notes1 = readAllNotes();
+                trip.setNotes(notes1);
 
-                trip.setNotes(notes);
-
-              /*  String text="";
-                for(int i=0;i<notes.size();i++)
-                {
-                    text=text+"\n"+notes.get(i);
-                }
-                Toast.makeText(AddNoteActivity.this, text, Toast.LENGTH_SHORT).show();*/
+                Executors.newSingleThreadExecutor().execute(() ->{
+                    RDB.getTrips(AddNoteActivity.this).update(trip);
+                });
+                Toast.makeText(AddNoteActivity.this, "Saved", Toast.LENGTH_SHORT).show();
+               AddNoteActivity.this.finish();
             }
         });
         decrease.setOnClickListener(new View.OnClickListener() {
@@ -78,7 +85,6 @@ public class AddNoteActivity extends AppCompatActivity {
                 if (counter != 0) {
                     view1.findViewById(R.id.btn_decrease).setOnClickListener(this);
                     linearLayout.removeViewAt(counter);
-                    notes.remove(notes.size()-1);
                     counter--;
                 }
             }
@@ -92,6 +98,27 @@ public class AddNoteActivity extends AppCompatActivity {
         decrease = findViewById(R.id.btn_decrease);
         note=findViewById(R.id.note);
         addNote=findViewById(R.id.add);
-        edt_notes=findViewById(R.id.edt_notes);
+
+    }
+    private ArrayList<String> readAllNotes() {
+        ArrayList<String> notes = new ArrayList<>();
+        for (int i = 0; i < linearLayout.getChildCount(); i++) {
+            View view = linearLayout.getChildAt(i);
+            if (view instanceof LinearLayout) {
+                LinearLayout linearLayout = (LinearLayout) view;
+                for (int j = 0; j < linearLayout.getChildCount(); j++) {
+                    View mView = linearLayout.getChildAt(j);
+                    if (mView instanceof EditText) {
+                        EditText editText = (EditText) mView;
+                        String etNote = editText.getText().toString().trim();
+                        if (!etNote.equals("")) {
+                            notes.add(etNote);
+                        }
+                    }
+
+                }
+            }
+        }
+        return notes;
     }
 }

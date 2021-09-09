@@ -18,9 +18,10 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.DialogFragment;
 
 import com.Team.Tripawy.Room.RDB;
+import com.Team.Tripawy.helper.HelperMethods;
 import com.Team.Tripawy.models.Trip;
 
-import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -36,17 +37,24 @@ public class Update_Trip extends AppCompatActivity implements TimePickerDialog.O
     Button update_btn,cancle_btn;
     int trip_id;
     Trip trip;
+    List<String>notes;
+    List<String>data;
     AddNoteActivity addNoteActivity=new AddNoteActivity();
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-        timeText.setText( hourOfDay +  " : " + minute );
+        Calendar c=Calendar.getInstance();
+        c.set(Calendar.HOUR_OF_DAY,hourOfDay);
+        c.set(Calendar.MINUTE,minute);
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("HH:mm");
+        timeText.setText(simpleDateFormat.format(c.getTime()));
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_trip);
         initComponent();
-        List<String>data=new ArrayList<>();
+        data=new ArrayList<>();
         data=getIntent().getStringArrayListExtra("data");
+        notes =getIntent().getStringArrayListExtra("notes");
         editName.setText(data.get(0));
         editStart.setText(data.get(1));
         editEnd.setText(data.get(2));
@@ -75,6 +83,7 @@ public class Update_Trip extends AppCompatActivity implements TimePickerDialog.O
                 Update_Trip.this.finish();
             }
         });
+        List<String> finalData = data;
         update_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -85,6 +94,7 @@ public class Update_Trip extends AppCompatActivity implements TimePickerDialog.O
                 }
                 else
                 {
+
                     trip=new Trip();
                     trip.setId(trip_id);
                     Executors.newSingleThreadExecutor().execute(() ->{
@@ -99,11 +109,13 @@ public class Update_Trip extends AppCompatActivity implements TimePickerDialog.O
                                         "One Way",
                                         editStart.getText().toString(),
                                         editEnd.getText().toString(),
-                                        addNoteActivity.notes)
+                                        (ArrayList<String>) notes)
 
                         );
                     });
                     Toast.makeText(Update_Trip.this, "update", Toast.LENGTH_SHORT).show();
+                    HelperMethods.startScheduling(Update_Trip.this, dateText.getText().toString(),timeText.getText()
+                            .toString(),tripName.getText().toString(),editStart.getText().toString(),editEnd.getText().toString());
                     Update_Trip.this.finish();
                 }
 
@@ -130,13 +142,17 @@ public class Update_Trip extends AppCompatActivity implements TimePickerDialog.O
         mySpinner2=(Spinner) findViewById(R.id.mySpinner2);
     }
 
+
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         Calendar c=Calendar.getInstance();
         c.set(Calendar.YEAR,year);
         c.set(Calendar.MONTH,month);
         c.set(Calendar.DAY_OF_MONTH,dayOfMonth);
-        String date= DateFormat.getDateInstance(DateFormat.DEFAULT).format(c.getTime());
-        dateText.setText(date);
+        // String date= DateFormat.getDateInstance(DateFormat.DEFAULT).format(c.getTime());
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("dd-MM-yy");
+
+        dateText.setText(simpleDateFormat.format(c.getTime()));
+        // dateText.setText(date);
     }
 }

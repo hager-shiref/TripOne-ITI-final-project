@@ -1,9 +1,9 @@
 package com.Team.Tripawy;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Splash extends AppCompatActivity {
 
@@ -11,6 +11,7 @@ public class Splash extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
         Thread thread =new Thread(){
             @Override
             public void run() {
@@ -26,5 +27,6 @@ public class Splash extends AppCompatActivity {
         };
         thread.start();
     }
+
 
 }

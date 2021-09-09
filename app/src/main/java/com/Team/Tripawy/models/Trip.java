@@ -7,9 +7,7 @@ import androidx.room.TypeConverters;
 
 import com.Team.Tripawy.Room.Converter;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 
 
 @Entity (tableName = "trip")
@@ -49,6 +47,16 @@ public class Trip {
         this.from = from;
         this.to = to;
         this.notes = notes;
+    }
+    public Trip(int id,String name, String date, String time, String tripState, String from, String to) {
+        this.name = name;
+        this.date = date;
+        this.time = time;
+        this.tripState = tripState;
+        this.id=id;
+        this.from = from;
+        this.to = to;
+
     }
 
     public String getTripState() {

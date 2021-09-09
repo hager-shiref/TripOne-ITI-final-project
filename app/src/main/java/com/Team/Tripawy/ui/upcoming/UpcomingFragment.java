@@ -1,6 +1,10 @@
 package com.Team.Tripawy.ui.upcoming;
 
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +32,7 @@ public class UpcomingFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         listLiveData = RDB.getTrips(getContext()).getAllUpcoming();
+
         View view=inflater.inflate(R.layout.fragment_upcoming, container, false);
         return view;
 
@@ -36,7 +41,13 @@ public class UpcomingFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (!Settings.canDrawOverlays(getContext())) {
+                Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                        Uri.parse("package:" + getContext().getPackageName()));
+                startActivityForResult(intent, 1234);
+            }
+        }
         // to get all upcoming trips
         listLiveData.observe((LifecycleOwner) getContext(), new Observer<List<Trip>>() {
             @Override
@@ -47,6 +58,13 @@ public class UpcomingFragment extends Fragment {
                 recyclerView.setAdapter(homeAdaptor);
             }
         });
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1234) {
+
+        }
     }
 
     @Override

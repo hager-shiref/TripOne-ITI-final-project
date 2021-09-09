@@ -3,6 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/ITI_Tasks/TRIBAWY/TRIBAWY/app/src/main/res/drawable-v24/baseline_search_20.xml" value="0.2361111111111111" />
+        <entry key="..\:/ITI_Tasks/TRIBAWY/TRIBAWY/app/src/main/res/drawable-v24/ic_more_24dp.xml" value="0.2361111111111111" />
+        <entry key="..\:/ITI_Tasks/TRIBAWY/TRIBAWY/app/src/main/res/drawable-v24/ic_more_vert_black_24dp.xml" value="0.2361111111111111" />
+        <entry key="..\:/ITI_Tasks/TRIBAWY/TRIBAWY/app/src/main/res/drawable-v24/shape.xml" value="0.2361111111111111" />
+        <entry key="..\:/ITI_Tasks/TRIBAWY/TRIBAWY/app/src/main/res/drawable/floation_shape.xml" value="0.2361111111111111" />
+        <entry key="..\:/ITI_Tasks/TRIBAWY/TRIBAWY/app/src/main/res/drawable/ic_menu_slideshow.xml" value="0.2361111111111111" />
+        <entry key="..\:/ITI_Tasks/TRIBAWY/TRIBAWY/app/src/main/res/layout/activity_floating_widget.xml" value="0.33" />
+        <entry key="..\:/ITI_Tasks/TRIBAWY/TRIBAWY/app/src/main/res/layout/floating_shape.xml" value="0.18611111111111112" />
+        <entry key="..\:/ITI_Tasks/TRIBAWY/TRIBAWY/app/src/main/res/layout/nav_header_main.xml" value="0.1" />
         <entry key="..\:/ITI_Tasks/new/Update UI/Tripawy/app/src/main/res/layout/activity_add_note.xml" value="0.25" />
         <entry key="..\:/ITI_Tasks/new/Update UI/Tripawy/app/src/main/res/layout/activity_add_trip.xml" value="0.2421875" />
         <entry key="..\:/ITI_Tasks/new/Update UI/Tripawy/app/src/main/res/layout/activity_login.xml" value="0.2421875" />
@@ -53,6 +62,13 @@
         <entry key="..\:/Update UI/Tripawy/app/src/main/res/menu/activity_main_drawer.xml" value="0.2421875" />
         <entry key="..\:/Update UI/Tripawy/app/src/main/res/menu/menu.xml" value="0.1" />
         <entry key="..\:/Update UI/Tripawy/app/src/main/res/menu/notes_menu.xml" value="0.1" />
+        <entry key="..\:/Users/hp/Downloads/r/TRIBAWY/TRIBAWY/app/src/main/res/layout/activity_floating_widget.xml" value="0.209375" />
+        <entry key="..\:/Users/hp/Downloads/r/TRIBAWY/TRIBAWY/app/src/main/res/layout/fragment_history.xml" value="0.209375" />
+        <entry key="..\:/Users/hp/Downloads/r/TRIBAWY/TRIBAWY/app/src/main/res/layout/history_recycler.xml" value="0.209375" />
+        <entry key="..\:/Users/hp/Downloads/r/TRIBAWY/TRIBAWY/app/src/main/res/layout/recycler.xml" value="0.209375" />
+        <entry key="..\:/Users/hp/Downloads/r/TRIBAWY/TRIBAWY/app/src/main/res/menu/menu.xml" value="0.209375" />
+        <entry key="..\:/Users/hp/Downloads/r/TRIBAWY/TRIBAWY/app/src/main/res/menu/menu2.xml" value="0.209375" />
+        <entry key="..\:/Users/hp/Downloads/r/TRIBAWY/TRIBAWY/app/src/main/res/menu/notes_menu.xml" value="0.209375" />
         <entry key="..\:/Users/hp/Downloads/r/Trip project/TRIBAWY/app/src/main/res/layout/activity_add_note.xml" value="0.14629629629629629" />
         <entry key="..\:/Users/hp/Downloads/r/Trip project/TRIBAWY/app/src/main/res/layout/activity_add_trip.xml" value="0.209375" />
         <entry key="..\:/Users/hp/Downloads/r/Trip project/TRIBAWY/app/src/main/res/layout/activity_trip_update.xml" value="0.1953125" />
@@ -64,6 +80,9 @@
         <entry key="..\:/Users/hp/Downloads/r/Trip project/TRIBAWY/app/src/main/res/menu/activity_main_drawer.xml" value="0.209375" />
         <entry key="..\:/Users/hp/Downloads/r/Trip project/TRIBAWY/app/src/main/res/menu/menu.xml" value="0.209375" />
         <entry key="..\:/Users/hp/Downloads/r/Trip project/TRIBAWY/app/src/main/res/menu/notes_menu.xml" value="0.209375" />
+        <entry key="..\:/Users/hp/Downloads/r/Trip project/TRIBAWY7/TRIBAWY/app/src/main/res/layout/app_bar_main.xml" value="0.209375" />
+        <entry key="..\:/Users/hp/Downloads/r/Trip project/TRIBAWY7/TRIBAWY/app/src/main/res/layout/content_main.xml" value="0.209375" />
+        <entry key="..\:/Users/hp/Downloads/r/Trip project/TRIBAWY7/TRIBAWY/app/src/main/res/layout/nav_header_main.xml" value="0.209375" />
         <entry key="..\:/Users/hp/Downloads/r/Update UI/Tripawy/app/src/main/res/layout/activity_login.xml" value="0.209375" />
         <entry key="..\:/Users/hp/Downloads/r/Update UI/Tripawy/app/src/main/res/layout/recycler.xml" value="0.209375" />
         <entry key="..\:/Users/hp/Downloads/r/Update UI/Tripawy/app/src/main/res/menu/menu.xml" value="0.209375" />

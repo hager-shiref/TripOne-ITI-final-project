@@ -1,6 +1,7 @@
 package com.Team.Tripawy;
 
 import android.annotation.SuppressLint;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -24,8 +25,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.Team.Tripawy.Room.RDB;
 import com.Team.Tripawy.models.Trip;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.Executors;
 
 public class RVAdaptor extends RecyclerView.Adapter<RVAdaptor.ViewHolder> {
@@ -59,6 +64,14 @@ public class RVAdaptor extends RecyclerView.Adapter<RVAdaptor.ViewHolder> {
         holder.time.setText(list.get(position).getTime()+"");
         holder.end.setText(list.get(position).getTo());
         holder.trip_state.setText(list.get(position).getTripState());
+        Calendar cal = Calendar.getInstance();
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yy HH:mm", Locale.ENGLISH);
+        try {
+            cal.setTime(sdf.parse(list.get(position).getDate()+" "+list.get(position).getTime()));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         holder.popup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,14 +86,20 @@ public class RVAdaptor extends RecyclerView.Adapter<RVAdaptor.ViewHolder> {
                     public boolean onMenuItemClick(MenuItem item) {
                         if (item.getItemId() == R.id.addnote) {
 
-                          /*  PopupMenu pop = new PopupMenu(cntxt, v);
-                            pop.inflate(R.menu.notes_menu);
-                            for (String n : list.get(position).getNotes()) {
-                                pop.getMenu().add(n);
-                            }
-                            pop.show();*/
-                            // Toast.makeText(cntxt, "no notes", Toast.LENGTH_SHORT).show();
+
                             Intent intent =new Intent(cntxt,AddNoteActivity.class);
+                            int id =list.get(position).getId();
+                            intent.putExtra("id",id);
+                           // Toast.makeText(cntxt, id+"", Toast.LENGTH_SHORT).show();
+                            List<String> data =new ArrayList<>();
+                            data.add(list.get(position).getName());
+                            data.add(list.get(position).getDate());
+                            data.add(list.get(position).getTime());
+                            data.add(list.get(position).getTripType());
+                            data.add(list.get(position).getTo());
+                            data.add(list.get(position).getFrom());
+                            data.add(list.get(position).getTripState());
+                            intent.putStringArrayListExtra("data", (ArrayList<String>) data);
                             cntxt.startActivity(intent);
 
                         }
@@ -100,9 +119,14 @@ public class RVAdaptor extends RecyclerView.Adapter<RVAdaptor.ViewHolder> {
                             trip.setTripType(list.get(position).getTripType());
                             trip.setTo(list.get(position).getTo());
                             trip.setFrom(list.get(position).getFrom());
+                            trip.setNotes(list.get(position).getNotes());
                             Executors.newSingleThreadExecutor().execute(() ->{
                                 RDB.getTrips(v.getContext()).update(trip);
                             });
+                            Intent intent = new Intent(cntxt, AlarmService.class);
+                            PendingIntent pendingIntent = PendingIntent.getService(
+                                    cntxt.getApplicationContext(), (int) cal.getTimeInMillis(),intent , PendingIntent.FLAG_ONE_SHOT);
+                            pendingIntent.cancel();
                             Toast.makeText(cntxt, "canceld", Toast.LENGTH_SHORT).show();
 
                         }
@@ -115,8 +139,6 @@ public class RVAdaptor extends RecyclerView.Adapter<RVAdaptor.ViewHolder> {
         holder.startnowBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 Executors.newSingleThreadExecutor().execute(() -> {
                     RDB.getTrips(cntxt).insert(
                             new Trip(list.get(position).getName(),
@@ -126,8 +148,12 @@ public class RVAdaptor extends RecyclerView.Adapter<RVAdaptor.ViewHolder> {
                                     "One Way",
                                     list.get(position).getFrom(),
                                     list.get(position).getTo(),
-                                    AddNoteActivity.notes));
+                                    list.get(position).getNotes()));
                 });
+                Intent intent2 = new Intent(cntxt, AlarmService.class);
+                PendingIntent pendingIntent = PendingIntent.getService(
+                        cntxt.getApplicationContext(), (int) cal.getTimeInMillis(),intent2 , PendingIntent.FLAG_ONE_SHOT);
+                pendingIntent.cancel();
                 trip=new Trip();
                 int ID=list.get(position).getId();
                 trip.setId(ID);
@@ -138,50 +164,21 @@ public class RVAdaptor extends RecyclerView.Adapter<RVAdaptor.ViewHolder> {
                 Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
                 mapIntent.setPackage("com.google.android.apps.maps");
                 cntxt.startActivity(mapIntent);
-
-             /*  try {
-                    // when google map installed
-                    // intialize uri
-                    Uri uri = Uri.parse("https://www.google.co.in/maps/dir/"+"Dikirnis"+"/"+"Mansoura");
-                    // intialize intent with action view
-                    Intent intent = new Intent(Intent.ACTION_VIEW,uri);
-                    // set package
-                    intent.setPackage("com.google.android.apps.maps");
-                    //set flag
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    // start activity
-                    cntxt.startActivity(intent);
-                } catch (ActivityNotFoundException e){
-                    // when google map is not installed
-                    // intialize uri
-                    Uri uri = Uri.parse("https://play.google.com/store/apps/details?id=com.google.android.apps.maps&hl=en&gl=US");
-                    // intialize intent with action view
-                    Intent intent = new Intent(Intent.ACTION_VIEW,uri);
-                    //set flags
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    cntxt.startActivity(intent);
-                }*/
-
+                Intent intent =new Intent(v.getContext(), FloatingViewService.class);
+                List<String> notes =list.get(position).getNotes();
+                intent.putStringArrayListExtra("data", (ArrayList<String>) notes);
+                cntxt.startService(intent);
             }
         });
+
         holder.note.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // Intent intent =new Intent(cntxt,ViewNotes.class);
-               // cntxt.startActivity(intent);
+
                 List <String> notes =new ArrayList<>();
-               notes.add("note1");
-                notes.add(("note2"));
-                notes.add("notes3");
-                notes.add("notes3");
-                notes.add("notes3");
+                notes=list.get(position).getNotes();
                openDialog(notes);
-               /* String text="";
-                for(int i=0;i<notes.size();i++)
-                {
-                    text=text+"\n"+notes.get(i);
-                }
-                Toast.makeText(cntxt, text, Toast.LENGTH_SHORT).show();*/
+
 
             }
         });
@@ -195,12 +192,15 @@ public class RVAdaptor extends RecyclerView.Adapter<RVAdaptor.ViewHolder> {
                 data.add(list.get(position).getDate());
                 data.add(list.get(position).getTime());
                 data.add(list.get(position).getId()+"");
+                List<String> notes =list.get(position).getNotes();
                 Intent updateIntent =new Intent(cntxt,Update_Trip.class);
                 updateIntent.putStringArrayListExtra("data", (ArrayList<String>) data);
+                updateIntent.putStringArrayListExtra("notes", (ArrayList<String>) notes);
                 cntxt.startActivity(updateIntent);
 
             }
         });
+
 
     }
 
