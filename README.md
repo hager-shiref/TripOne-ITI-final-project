@@ -5,3 +5,4 @@ The application should remind the user with the trips on the time specified by t
 In addition, the application should navigate the user to the right destination , and save the user's trips notes if there are any.
 After that, the application should keep track of the upcoming and past trips.
 
+---------
