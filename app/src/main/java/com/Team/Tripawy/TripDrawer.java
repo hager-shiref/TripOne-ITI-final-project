@@ -1,5 +1,6 @@
 package com.Team.Tripawy;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -8,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -89,10 +91,8 @@ public class TripDrawer extends AppCompatActivity {
                 boolean handled = NavigationUI.onNavDestinationSelected(item, navController);
                 if (!handled) {
                     if (item.getItemId() == R.id.sync) {
-                        //try to syns data with firebase
-                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                        String id= user.getUid();
-                        sync(id);
+                        openDialog();
+
 
                     } else if (item.getItemId() == R.id.logout) {
                         //try to delete local data and log user out
@@ -133,5 +133,26 @@ public class TripDrawer extends AppCompatActivity {
                 Toast.makeText(TripDrawer.this,"failed to add data"+error.getMessage(),Toast.LENGTH_SHORT).show();
             }
         });
+    }
+    private void openDialog() {
+        AlertDialog dialog =new AlertDialog.Builder(TripDrawer.this)
+                .setTitle("Sync")
+                .setIcon(R.drawable.logo)
+                .setMessage("Do You Want to Sync data")
+                .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                        String id= user.getUid();
+                        sync(id);
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                }).create();
+        dialog.show();
     }
 }

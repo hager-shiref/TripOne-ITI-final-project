@@ -213,6 +213,7 @@ public class RVAdaptor extends RecyclerView.Adapter<RVAdaptor.ViewHolder> {
         AlertDialog dialog =new AlertDialog.Builder(cntxt)
                 .setTitle("Your notes")
                 .setMessage(text)
+                .setIcon(R.drawable.logo)
                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {

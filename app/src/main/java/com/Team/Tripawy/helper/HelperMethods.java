@@ -38,16 +38,6 @@ public class HelperMethods {
         intent.putExtra("end",end);
         intent.putExtra("date",date);
         intent.putExtra("time",time);
-       /* FirebaseAuth mAuth;
-        mAuth = FirebaseAuth.getInstance();
-        DatabaseReference databaseReference ;
-        FirebaseDatabase firebaseDatabase;
-
-        firebaseDatabase= FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference().child("Temp").child(mAuth.getUid());
-
-        Trip trip = new Trip(0,name,date,time,"Upcoming",start,end);
-        databaseReference.setValue(trip);*/
 
         Calendar cal = Calendar.getInstance();
 
