@@ -6,3 +6,4 @@ In addition, the application should navigate the user to the right destination ,
 After that, the application should keep track of the upcoming and past trips.
 
 ---------
+# App Scenario
