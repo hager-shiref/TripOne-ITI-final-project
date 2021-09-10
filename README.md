@@ -47,7 +47,7 @@ Add Trip Actvity
 
 Upcoming Trips
 
-![p5](https://user-images.githubusercontent.com/72301122/132778546-76f89eb0-16a4-4063-925a-c502aa2b7ea9.jpg)
+![p13](https://user-images.githubusercontent.com/72301122/132804409-b93bfab1-6050-42b2-a033-294e9a843321.jpg)
 
 History 
 
@@ -72,21 +72,5 @@ Notification
 Navigation on Start button Clicked
 
 ![p11](https://user-images.githubusercontent.com/72301122/132779086-527db938-0ed7-4ea9-a420-68264fc07e55.jpg)
-
----------
-# Team members
-
-
-1.Mostafa Ahmed
-2.Hager Sherif
------------
-#  Corresponding Tasks
-
-
-Mostafa ahmed : Firebase auth , Google sign in , Upcoming trips and History UI
-(recycler view),start button,Alert dialog Reminder,Notification service.
-
-Hager sherif : splash screen , Login and Signup UI , Navigation Drawer,
-Floating widget , Add trip , Room database,Sync with firebase.
 
 
