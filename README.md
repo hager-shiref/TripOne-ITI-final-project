@@ -22,5 +22,8 @@ there is an Alarm dialog that appears as a reminder and he can start , cancel or
 9. User can sync data to FireBase 
 10. User can logout from the application
 
----------
-<img align="left" width="300" height="400" src="https://user-images.githubusercontent.com/72301122/132777138-696649d4-29d3-40b0-bcba-61b0cf859266.jpg"
+--------
+Photos
+--------
+login
+![p1](https://user-images.githubusercontent.com/72301122/132777138-696649d4-29d3-40b0-bcba-61b0cf859266.jpg)
