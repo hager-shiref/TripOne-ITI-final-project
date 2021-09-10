@@ -29,28 +29,23 @@ there is an Alarm dialog that appears as a reminder and he can start , cancel or
 
 <img align="center" width="300" height="600" src="https://user-images.githubusercontent.com/72301122/132777138-696649d4-29d3-40b0-bcba-61b0cf859266.jpg">
 
-<img align="right" width="200" height="600" src="https://user-images.githubusercontent.com/72301122/132778202-d238c447-d1c8-452b-96d5-365fcfef281c.jpg">
+<img align="right" width="300" height="600" src="https://user-images.githubusercontent.com/72301122/132778202-d238c447-d1c8-452b-96d5-365fcfef281c.jpg">
 
 <img align="left" width="300" height="600" src="https://user-images.githubusercontent.com/72301122/132778283-badd6828-31a2-4091-bdbd-5dd3afafb735.jpg">
 
 <img align="center" width="300" height="600" src="https://user-images.githubusercontent.com/72301122/132778495-38994227-cb94-4afc-9dc2-3e886dc90ee5.jpg">
 
+<img align="right" width="300" height="600" src="https://user-images.githubusercontent.com/72301122/132804409-b93bfab1-6050-42b2-a033-294e9a843321.jpg">
 
-Upcoming Trips
+<img align="left" width="300" height="600" src="https://user-images.githubusercontent.com/72301122/132778597-bb87a79f-dbda-4920-b93b-bb1d61a3a026.jpg">
 
-![p13](https://user-images.githubusercontent.com/72301122/132804409-b93bfab1-6050-42b2-a033-294e9a843321.jpg)
+<img align="center" width="300" height="600" src="https://user-images.githubusercontent.com/72301122/132778658-71437605-51f5-48bf-a92b-8e78166c8a32.jpg">
 
-History 
+<img align="right" width="300" height="600" src="https://user-images.githubusercontent.com/72301122/132778775-c5d04c9b-af85-43b1-94c4-37de14262293.jpg">
 
-![p6](https://user-images.githubusercontent.com/72301122/132778597-bb87a79f-dbda-4920-b93b-bb1d61a3a026.jpg)
+<img align="left" width="300" height="600" src="https://user-images.githubusercontent.com/72301122/132778815-9f0b46e2-920a-4c5b-aa13-c3380ad4142b.jpg">
 
-Add notes
 
-![p61](https://user-images.githubusercontent.com/72301122/132778658-71437605-51f5-48bf-a92b-8e78166c8a32.jpg)
-
-View notes
-
-![p7](https://user-images.githubusercontent.com/72301122/132778775-c5d04c9b-af85-43b1-94c4-37de14262293.jpg)
 
 Alarm 
 
