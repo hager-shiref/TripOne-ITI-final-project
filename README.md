@@ -31,14 +31,10 @@ there is an Alarm dialog that appears as a reminder and he can start , cancel or
 
 <img align="right" width="300" height="600" src="https://user-images.githubusercontent.com/72301122/132778202-d238c447-d1c8-452b-96d5-365fcfef281c.jpg">
 
+<img align="left" width="300" height="600" src="https://user-images.githubusercontent.com/72301122/132778283-badd6828-31a2-4091-bdbd-5dd3afafb735.jpg">
 
- Navigation Drawer
+<img align="center" width="300" height="600" src="https://user-images.githubusercontent.com/72301122/132778495-38994227-cb94-4afc-9dc2-3e886dc90ee5.jpg">
 
-![p3](https://user-images.githubusercontent.com/72301122/132778283-badd6828-31a2-4091-bdbd-5dd3afafb735.jpg)
-
-Add Trip Actvity
-
-![p4](https://user-images.githubusercontent.com/72301122/132778495-38994227-cb94-4afc-9dc2-3e886dc90ee5.jpg)
 
 Upcoming Trips
 
