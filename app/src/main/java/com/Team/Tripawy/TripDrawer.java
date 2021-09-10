@@ -93,7 +93,6 @@ public class TripDrawer extends AppCompatActivity {
                     if (item.getItemId() == R.id.sync) {
                         openDialog();
 
-
                     } else if (item.getItemId() == R.id.logout) {
                         //try to delete local data and log user out
                         FirebaseAuth.getInstance().signOut();

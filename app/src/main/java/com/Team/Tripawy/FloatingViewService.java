@@ -127,11 +127,9 @@ public class FloatingViewService extends Service {
                             }
                             else {
                                 PopupMenu pop = new PopupMenu(FloatingViewService.this, v);
-                                String text = "";
                                 for (int i = 0; i < notes.size(); i++) {
                                     pop.inflate(R.menu.notes_menu);
                                     pop.getMenu().add(notes.get(i));
-
                                     pop.show();
 
                                 }

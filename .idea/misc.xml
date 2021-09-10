@@ -25,6 +25,15 @@
         <entry key="..\:/ITI_Tasks/new/Update UI/Tripawy/app/src/main/res/menu/activity_main_drawer.xml" value="0.2421875" />
         <entry key="..\:/ITI_Tasks/new/Update UI/Tripawy/app/src/main/res/menu/menu.xml" value="0.25" />
         <entry key="..\:/ITI_Tasks/new/Update UI/Tripawy/app/src/main/res/menu/notes_menu.xml" value="0.128125" />
+        <entry key="..\:/TripOne/TripOne/app/src/main/res/layout/activity_main.xml" value="0.1574074074074074" />
+        <entry key="..\:/TripOne/TripOne/app/src/main/res/layout/app_bar_main.xml" value="0.25" />
+        <entry key="..\:/TripOne/TripOne/app/src/main/res/layout/content_main.xml" value="0.1574074074074074" />
+        <entry key="..\:/TripOne/TripOne/app/src/main/res/layout/fragment_history.xml" value="0.1574074074074074" />
+        <entry key="..\:/TripOne/TripOne/app/src/main/res/layout/fragment_upcoming.xml" value="0.1574074074074074" />
+        <entry key="..\:/TripOne/TripOne/app/src/main/res/layout/history_recycler.xml" value="0.1574074074074074" />
+        <entry key="..\:/TripOne/TripOne/app/src/main/res/layout/nav_header_main.xml" value="0.1574074074074074" />
+        <entry key="..\:/TripOne/TripOne/app/src/main/res/menu/activity_main_drawer.xml" value="0.23129251700680273" />
+        <entry key="..\:/TripOne/TripOne/app/src/main/res/menu/menu.xml" value="0.1574074074074074" />
         <entry key="..\:/Tripawy/app/src/main/res/drawable-v24/ic_add_24px.xml" value="0.21296296296296297" />
         <entry key="..\:/Tripawy/app/src/main/res/drawable-v24/ic_add_circle.xml" value="0.21296296296296297" />
         <entry key="..\:/Tripawy/app/src/main/res/drawable-v24/ic_date_range_24px.xml" value="0.21296296296296297" />
@@ -86,9 +95,6 @@
         <entry key="..\:/Users/hp/Downloads/r/Update UI/Tripawy/app/src/main/res/layout/activity_login.xml" value="0.209375" />
         <entry key="..\:/Users/hp/Downloads/r/Update UI/Tripawy/app/src/main/res/layout/recycler.xml" value="0.209375" />
         <entry key="..\:/Users/hp/Downloads/r/Update UI/Tripawy/app/src/main/res/menu/menu.xml" value="0.209375" />
-        <entry key="..\:/Users/hp/Downloads/trip/TripOne/app/src/main/res/layout/app_bar_main.xml" value="0.20462962962962963" />
-        <entry key="..\:/Users/hp/Downloads/trip/TripOne/app/src/main/res/layout/content_main.xml" value="0.20462962962962963" />
-        <entry key="..\:/Users/hp/Downloads/trip/TripOne/app/src/main/res/layout/nav_header_main.xml" value="0.20462962962962963" />
         <entry key="app/src/main/res/drawable/ic_home_solid.xml" value="0.315625" />
         <entry key="app/src/main/res/layout/activity_add_note.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_add_trip.xml" value="0.1401305876443998" />
