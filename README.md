@@ -26,9 +26,9 @@ there is an Alarm dialog that appears as a reminder and he can start , cancel or
 # Photos
 
 Splash
-<img align="left" width="300" height="400" src="https://user-images.githubusercontent.com/72301122/132779588-8bdc3802-4b58-4c51-b5da-f186568feceb.jpg">
+<img align="left" width="300" height="600" src="https://user-images.githubusercontent.com/72301122/132779588-8bdc3802-4b58-4c51-b5da-f186568feceb.jpg">
 
-<img align="center" width="300" height="400" src="https://user-images.githubusercontent.com/72301122/132777138-696649d4-29d3-40b0-bcba-61b0cf859266.jpg">
+<img align="center" width="300" height="600" src="https://user-images.githubusercontent.com/72301122/132777138-696649d4-29d3-40b0-bcba-61b0cf859266.jpg">
 
 
 SignUp Activity
