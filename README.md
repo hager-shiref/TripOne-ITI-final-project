@@ -29,10 +29,8 @@ there is an Alarm dialog that appears as a reminder and he can start , cancel or
 
 <img align="center" width="300" height="600" src="https://user-images.githubusercontent.com/72301122/132777138-696649d4-29d3-40b0-bcba-61b0cf859266.jpg">
 
+<img align="right" width="300" height="600" src="https://user-images.githubusercontent.com/72301122/132778202-d238c447-d1c8-452b-96d5-365fcfef281c.jpg">
 
-SignUp Activity
-
-![p2](https://user-images.githubusercontent.com/72301122/132778202-d238c447-d1c8-452b-96d5-365fcfef281c.jpg)
 
  Navigation Drawer
 
