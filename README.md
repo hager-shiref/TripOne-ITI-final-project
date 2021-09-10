@@ -23,7 +23,70 @@ there is an Alarm dialog that appears as a reminder and he can start , cancel or
 10. User can logout from the application
 
 --------
-Photos
---------
-login
+# Photos
+
+Splash
+
+![p0](https://user-images.githubusercontent.com/72301122/132779588-8bdc3802-4b58-4c51-b5da-f186568feceb.jpg)
+
+Login Activity
+
 ![p1](https://user-images.githubusercontent.com/72301122/132777138-696649d4-29d3-40b0-bcba-61b0cf859266.jpg)
+
+SignUp Activity
+
+![p2](https://user-images.githubusercontent.com/72301122/132778202-d238c447-d1c8-452b-96d5-365fcfef281c.jpg)
+
+ Navigation Drawer
+
+![p3](https://user-images.githubusercontent.com/72301122/132778283-badd6828-31a2-4091-bdbd-5dd3afafb735.jpg)
+
+Add Trip Actvity
+
+![p4](https://user-images.githubusercontent.com/72301122/132778495-38994227-cb94-4afc-9dc2-3e886dc90ee5.jpg)
+
+Upcoming Trips
+
+![p5](https://user-images.githubusercontent.com/72301122/132778546-76f89eb0-16a4-4063-925a-c502aa2b7ea9.jpg)
+
+History 
+
+![p6](https://user-images.githubusercontent.com/72301122/132778597-bb87a79f-dbda-4920-b93b-bb1d61a3a026.jpg)
+
+Add notes
+
+![p61](https://user-images.githubusercontent.com/72301122/132778658-71437605-51f5-48bf-a92b-8e78166c8a32.jpg)
+
+View notes
+
+![p7](https://user-images.githubusercontent.com/72301122/132778775-c5d04c9b-af85-43b1-94c4-37de14262293.jpg)
+
+Alarm 
+
+![p8](https://user-images.githubusercontent.com/72301122/132778815-9f0b46e2-920a-4c5b-aa13-c3380ad4142b.jpg)
+
+Notification
+
+![p10](https://user-images.githubusercontent.com/72301122/132778938-3802962b-84c3-4113-a140-7147400ae919.jpg)
+
+Navigation on Start button Clicked
+
+![p11](https://user-images.githubusercontent.com/72301122/132779086-527db938-0ed7-4ea9-a420-68264fc07e55.jpg)
+
+---------
+# Team members
+
+
+1.Mostafa Ahmed
+2.Hager Sherif
+-----------
+#  Corresponding Tasks
+
+
+Mostafa ahmed : Firebase auth , Google sign in , Upcoming trips and History UI
+(recycler view),start button,Alert dialog Reminder,Notification service.
+
+Hager sherif : splash screen , Login and Signup UI , Navigation Drawer,
+Floating widget , Add trip , Room database,Sync with firebase.
+
+
