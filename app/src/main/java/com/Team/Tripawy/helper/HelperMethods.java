@@ -39,18 +39,18 @@ public class HelperMethods {
         intent.putExtra("date",date);
         intent.putExtra("time",time);
 
-        Calendar cal = Calendar.getInstance();
+        Calendar calendar = Calendar.getInstance();
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yy HH:mm", Locale.ENGLISH);
         try {
-            cal.setTime(sdf.parse(date+" "+time));
+            calendar.setTime(sdf.parse(date+" "+time));
         } catch (ParseException e) {
             e.printStackTrace();
         }
         PendingIntent pendingIntent = PendingIntent.getService(
-                context.getApplicationContext(), (int) cal.getTimeInMillis(), intent, PendingIntent.FLAG_ONE_SHOT);
+                context.getApplicationContext(), (int) calendar.getTimeInMillis(), intent, PendingIntent.FLAG_ONE_SHOT);
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
-        alarmManager.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), pendingIntent);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
 
     }
 

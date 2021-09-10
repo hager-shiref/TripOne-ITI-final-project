@@ -84,8 +84,16 @@ public class SmallNotification extends Activity {
             notificationManager.createNotificationChannel(channel);
 
         }
+        Calendar calendar = Calendar.getInstance();
 
-        notificationManager.notify( 0, notificationBuilder.build());
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-M-yy HH:mm", Locale.ENGLISH);
+        try {
+            calendar.setTime(sdf.parse(date+" "+time));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        notificationManager.notify( (int) calendar.getTimeInMillis(), notificationBuilder.build());
 
     }
 
