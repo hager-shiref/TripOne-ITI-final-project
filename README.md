@@ -25,7 +25,8 @@ there is an Alarm dialog that appears as a reminder and he can start , cancel or
 --------
 # Photos
 
-<img align="left"  width="235" height="500" src="https://user-images.githubusercontent.com/72301122/132779588-8bdc3802-4b58-4c51-b5da-f186568feceb.jpg"><img align="center"  width="235" height="500" src="https://user-images.githubusercontent.com/72301122/132777138-696649d4-29d3-40b0-bcba-61b0cf859266.jpg"><img align="right"  width="235" height="500" src="https://user-images.githubusercontent.com/72301122/132778202-d238c447-d1c8-452b-96d5-365fcfef281c.jpg"><img align="left"  width="235" height="500" src="https://user-images.githubusercontent.com/72301122/132778283-badd6828-31a2-4091-bdbd-5dd3afafb735.jpg">
+<img align="left"  width="235" height="500" src="https://user-images.githubusercontent.com/72301122/132779588-8bdc3802-4b58-4c51-b5da-f186568feceb.jpg"><img align="center"  width="235" height="500" src="https://user-images.githubusercontent.com/72301122/132777138-696649d4-29d3-40b0-bcba-61b0cf859266.jpg"><img align="right"  width="235" height="500" src="https://user-images.githubusercontent.com/72301122/132778202-d238c447-d1c8-452b-96d5-365fcfef281c.jpg"><img align="left"  width="235" height="500" src="https://user-images.githubusercontent.com/72301122/132778283-badd6828-31a2-4091-bdbd-5dd3afafb735.jpg"><img align="center" width="235" height="500" src="https://user-images.githubusercontent.com/72301122/132778495-38994227-cb94-4afc-9dc2-3e886dc90ee5.jpg">
+
 
 
 
