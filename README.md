@@ -36,6 +36,7 @@ there is an Alarm dialog that appears as a reminder and he can start , cancel or
 <img align="left" width="200" height="500" src="https://user-images.githubusercontent.com/72301122/132778815-9f0b46e2-920a-4c5b-aa13-c3380ad4142b.jpg">
 <img align="center" width="200" height="500" src="https://user-images.githubusercontent.com/72301122/132778938-3802962b-84c3-4113-a140-7147400ae919.jpg">
 <img align="right" width="300" height="500" src="https://user-images.githubusercontent.com/72301122/132779086-527db938-0ed7-4ea9-a420-68264fc07e55.jpg">
-
+<img align="left" width="300" height="500" src="https://user-images.githubusercontent.com/57525957/133004837-a1d6fc58-0a4f-436d-8cc3-33fc99bf3d90.jpg">
+<img align="center" width="300" height="500" src="https://user-images.githubusercontent.com/57525957/133004845-a2795952-b982-4417-97be-542b6443952c.jpg">
 
 
